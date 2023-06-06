@@ -1,19 +1,11 @@
-body{
+body{margin-top:20px;
     color: #bcd0f7;
         background: #FFFFFF;
-        min-height: 100vh;
     }
     .account-settings .user-profile {
         margin: 0 0 1rem 0;
         padding-bottom: 1rem;
         text-align: center;
-    }
-
-    .section{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 10rem;
     }
     .account-settings .user-profile .user-avatar {
         margin: 0 0 1rem 0;
