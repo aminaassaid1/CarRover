@@ -46,14 +46,12 @@ class profile {
         $city = $connection -> real_escape_string($this -> city);
         $Country = $connection -> real_escape_string($this -> Country);
         $photo = $this -> photo ;
-
         if($password != ""){
-            $sql = "UPDATE `clients` SET `Prénom`='$first_name',`Nom`='$last_name',`CIN`='$CIN',`Email`='$email',`Phone`='$phone',`Pays`='$Country',`ville`='$city',`password`='$password' WHERE id_client = $id_client" ;
+            $sql = "UPDATE `clients` SET `Prénom`='$first_name',`Nom`='$last_name',`CIN`='$CIN',`Email`='$email',`Phone`='$phone',`Pays`='$Country',`ville`='$city',`password`='$password' WHERE id_client = '$id_client'" ;
         }else{
-            $sql = "UPDATE `clients` SET `Prénom`='$first_name',`Nom`='$last_name',`CIN`='$CIN',`Email`='$email',`Phone`='$phone',`Pays`='$Country',`ville`='$city' WHERE id_client = $id_client" ;
+            $sql = "UPDATE `clients` SET `Prénom`='$first_name',`Nom`='$last_name',`CIN`='$CIN',`Email`='$email',`Phone`='$phone',`Pays`='$Country',`ville`='$city' WHERE id_client = '$id_client'" ;
         }
-
-        if(!empty($photo)){
+        if($photo !=='images/' ){
             $sql = "UPDATE `clients` SET image ='$photo' WHERE id_client = $id_client" ;
         }
         $result = $connection -> query($sql);
@@ -91,12 +89,9 @@ class affiche_value{
             $dossier = "images/".$photo;
             move_uploaded_file($tmp_name,$dossier);
             $id_client =$_SESSION["id_client"];
-        
-            
-
-
+    
         $client = new profile ($first_name , $last_name , $email ,$phone,$CIN,$new_password,$city,$Country,$id_client,$dossier);
-            $resulta = $client -> edite_profile($connection);
+            $resulta = $client->edite_profile($connection);
 
         }
 
@@ -112,61 +107,63 @@ class affiche_value{
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="Profile.css">
-    <title>Document</title>
+    <title>edite_profile</title>
+    <link rel="icon" href="images/icons8-car-glyph-neue-96.png" type="image/x-icon">
+    <meta name="keywords" content="">
 </head>
 
 <body>
             <?php
-            $id_client = $_SESSION["id_client"];
-            $result = mysqli_query($connection, "SELECT * FROM `clients` WHERE id_client = $id_client");
-            $row = mysqli_fetch_assoc($result);
+                $id_client = $_SESSION["id_client"];
+                $result = mysqli_query($connection, "SELECT * FROM `clients` WHERE id_client = $id_client");
+                $row = mysqli_fetch_assoc($result);
             ?>
-<nav class="navbar navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" style="width: 30%; "></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                    aria-labelledby="offcanvasDarkNavbarLabel">
-                    <div class="offcanvas-header">
-                        <<li class="nav-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="0.875em" viewBox="0 0 448 512">
-                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <style>
-                                svg {
-                                    fill: #ededed
-                                }
-                                </style>
-                                <path
-                                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                            </svg> <h3 class="nav-link" href="Profile.php"><?php echo $row['Nom']; ?></h3>
-                            </li>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php">HOME</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="services.html">MY REGISTRATIONS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Profile.php">PROFILE</a>
-                            </li>
-                        </ul>
-                        <div>
-                            <form action="logout.php" method="get">
-                                <input type="submit" value="Log out" class="btn"
-                                    style="width: 200px; background-color: #FE5B29;" name="logout">
-                            </form>
-                        </div>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png" style="width: 30%; "></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <<li class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="0.875em" viewBox="0 0 448 512">
+                            <style>
+                            svg {
+                                fill: #ededed
+                            }
+                            </style>
+                            <path
+                                d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                        </svg>
+                        <h3 class="nav-link" href="Profile.php"><?php echo $row['Nom']; ?></h3>
+                        </li>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="MyRegistration.php">MY REGISTRATIONS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Profile.php">PROFILE</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <form action="logout.php" method="get">
+                            <input type="submit" value="Log out" class="btn"
+                                style="width: 200px; background-color: #FE5B29;" name="logout">
+                        </form>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
     <div class="main">
         <section class="section">
             <div class="container">
@@ -177,29 +174,33 @@ class affiche_value{
                                 <div class="account-settings">
                                     <div class="user-profile">
                                         <div class="user-avatar">
-                                            <img src="
-                                    <?php
-                                    session_start();
-                                     $id_client = $_SESSION["id_client"];
-                                     $displayImage = new affiche_value($id_client);
-                                     $result_image = $displayImage->value_client($connection);
+                                            <?php
+                                                $id_client = $_SESSION["id_client"];
+                                                $displayImage = new affiche_value($id_client);
+                                                $result_image = $displayImage->value_client($connection);
 
-                                     $row_image = $result_image->fetch_assoc();
-                                     $image = $row_image["image"];
-                                     echo $image;
-                                
-                                
-                                
-                                ?>" alt="Profile">
+                                                $row_image = $result_image->fetch_assoc();
+                                                $image = $row_image["image"];
+
+                                                // Check if the image path is not empty and the file exists
+                                                if (!empty($image) && file_exists($image)) {
+                                                    echo '<img src="' . $image . '" alt="Profile">';
+                                                } else {
+                                                    echo '<img src="path_to_default_image.jpg" alt="Profile">';
+                                                    // Debugging statements
+                                                    echo 'Image path: ' . $image . '<br>';
+                                                    echo 'File exists: ' . (file_exists($image) ? 'Yes' : 'No') . '<br>';
+                                                }
+                                            ?>
                                         </div>
-                                        <h5 class="user-name"><?php 
-                                $name = $_SESSION["Nom"];
-                                $prenom = $_SESSION["Prénom"];
+                                        <h5 class="user-name">
+                                            <?php 
+                                                $name = $_SESSION["Nom"];
+                                                $prenom = $_SESSION["Prénom"];
 
-                                echo $name.' '.$prenom;
-                                
-                                
-                                ?></h5>
+                                                echo $name.' '.$prenom;
+                                            ?>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
@@ -210,29 +211,29 @@ class affiche_value{
                             <div class="card-body">
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <h6 class="mb-3 text-primary">Personal Details</h6>
+                                        <h6 class="mb-3 " style="color: #FE5B29;">Personal Details</h6>
                                     </div>
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <?php 
-                                $id_client = $_SESSION["id_client"];
-                                $displayClient = new affiche_value($id_client);
+                                            $id_client = $_SESSION["id_client"];
+                                            $displayClient = new affiche_value($id_client);
 
-                                $result_display = $displayClient->value_client($connection);
-                                if($result_display->num_rows>0){
-                                    while($row=$result_display->fetch_assoc()){
+                                            $result_display = $displayClient->value_client($connection);
+                                            if($result_display->num_rows>0){
+                                            while($row=$result_display->fetch_assoc()){
                                         ?>
                                         <div class="row gutters">
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                 <label for="fullName">First name</label>
                                                 <input type="text" class="form-control" name="fname"
-                                                    value="<?php echo $row["Nom"]; ?>" id="fullName"
+                                                    value="<?php echo $row["Prénom"]; ?>" id="fullName"
                                                     placeholder="Enter full name">
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="eMail">last name </label>
+                                                    <label for="lname">last name </label>
                                                     <input type="text" class="form-control"
-                                                        value="<?php echo $row["Prénom"]; ?>" name="lname" id="eMail">
+                                                        value="<?php echo $row["Nom"]; ?>" name="lname" id="lname">
                                                 </div>
                                             </div>
                                         </div>
@@ -285,18 +286,16 @@ class affiche_value{
                                         <div class="row gutters">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="text-right">
-                                                    <button type="submit" id="submit" name="submit"
-                                                        class="btn btn-primary">Update</button>
+                                                    <button type="submit" id="submit" name="submit" class="btn"
+                                                        style="width: 200px; background-color: #FE5B29;">Update</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <?php
-                                    }
-                                    
-                                }  
-                                ?>
+                                            }
+                                            }  
+                                        ?>
                                     </form>
-
                                 </div>
                             </div>
                         </div>

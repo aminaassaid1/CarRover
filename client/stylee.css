@@ -8,13 +8,13 @@ body {
 a {
   -webkit-transition: .3s all ease;
   transition: .3s all ease;
-  color: #7754F6;
+  color: #FE5B29;
   font-weight: 500;
   text-decoration: none;
 }
 
 a:hover {
-  color: #643cf5;
+  color: #FE5B29;
 }
 
 .bg-img,
@@ -25,6 +25,7 @@ a:hover {
 
 .bg-img {
   left: 0;
+  background-image: url("images/zyro-image.png") !important; 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -36,7 +37,7 @@ a:hover {
 }
 
 .barzone{
-  background-color: #7754F6;
+  background-color: #FE5B29;
 }
 .landing{
   background-image: url("img/Grow_Your_Skills_Your_Career_with_GrowthZone.png");
@@ -116,7 +117,7 @@ a:hover {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-  border-color: #7754F6;
+  border-color: #FE5B29;
 }
 
 .form-wrap .password-show-toggle {
@@ -149,8 +150,8 @@ a:hover {
 }
 
 .form-wrap .form-check .form-check-input:checked {
-  background-color: #7754F6;
-  border-color: #7754F6 !important;
+  background-color: #FE5B29;
+  border-color: #FE5B29 !important;
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -164,20 +165,20 @@ a:hover {
 
 .form-wrap .btn-primary {
   border-radius: 10px;
-  background-color: #7754F6;
-  border-color: #7754F6;
+  background-color: #FE5B29;
+  border-color: #FE5B29 !important;
   height: 60px;
   font-weight: 500;
-  -webkit-box-shadow: 0 15px 30px -7px rgba(119, 84, 246, 0.5);
-          box-shadow: 0 15px 30px -7px rgba(119, 84, 246, 0.5);
+  -webkit-box-shadow: 0 15px 30px -7px #FE5B29;
+          box-shadow: 0 15px 30px -7px #FE5B29;
   -webkit-transition: .3s all ease;
   transition: .3s all ease;
   font-size: 18px;
 }
 
 .form-wrap .btn-primary:hover {
-  background-color: #643cf5;
-  border-color: #643cf5;
+  background-color: #FE5B29;
+  border-color: #FE5B29;
 }
 
 .form-wrap .social-account-wrap {

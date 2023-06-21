@@ -98,7 +98,7 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <title> Login </title>
-
+    <link rel ="icon"  href = "images/icons8-car-rental-64.png"  type = "image/x-icon">    <meta name="keywords" content="">
     <meta name="author" content="Untree.co">
     <link rel="shortcut icon" href="favicon.png">
 
@@ -112,7 +112,7 @@ if (isset($_POST['login'])) {
 <body>
 
     <div class="site-wrap d-md-flex align-items-stretch">
-        <div class="bg-img" style="background-image: url('images/register.png"></div>
+        <div class="bg-img" style="background-image: url('images/zyro-image.png) !i"></div>
         <div class="form-wrap">
             <div class="form-inner">
                 <h1 class="title">Login</h1>
@@ -131,13 +131,6 @@ if (isset($_POST['login'])) {
                         <label for="password">Password</label>
                     </div>
 
-                    <div class="d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="remember">
-                            <label for="remember" class="form-check-label">Keep me logged in</label>
-                        </div>
-                        <div><a href="#">Forgot password?</a></div>
-                    </div>
 
                     <div class="d-grid mb-4">
                         <button type="submit" name="login" class="btn btn-primary">Log in</button>

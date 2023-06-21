@@ -26,7 +26,7 @@
       $sql = "INSERT INTO `clients` (`Prénom`, `Nom`, `CIN`, `Email`, `Phone`, `Pays`, `ville`, `password`)
       VALUES ('$first_name', '$last_name', '$CIN', '$email', '$phone', '$city', '$country', '$hashed_password')";
       if ($conn->query($sql) === TRUE) {
-        header("location: index.php");
+        header("location: login.php");
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
@@ -44,7 +44,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Sign up</title>
-
+    <link rel ="icon"  href = "images/icons8-car-rental-64.png"  type = "image/x-icon">    <meta name="keywords" content="">
     <meta name="author" content="Untree.co">
     <link rel="shortcut icon" href="favicon.png">
 
@@ -58,7 +58,7 @@
 <body>
 
     <div class="site-wrap d-md-flex align-items-stretch">
-        <div class="bg-img" style="background-image: url('images/register.png')"></div>
+        <div class="bg-img" style="background-image: url('images/zyro-image.png')"></div>
         <div class="form-wrap">
             <div class="form-inner">
                 <h1 class="title">Sign up</h1>
@@ -120,26 +120,13 @@
                         <label>Password</label>
                         <div class="input-group" id="show_hide_password">
                             <input class="form-control" type="password" name="password">
-                            <div class="input-group-addon">
-                                <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                            </div>
                         </div>
                     </div>
-
-                    <div class="d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="remember">
-                            <label for="remember" class="form-check-label">I agree to the <a href="#">Terms of
-                                    Service</a> and <a href="#">Privacy Policy</a></label>
-                        </div>
-                    </div>
-
                     <div class="d-grid mb-4">
                         <button type="submit" name="submit" class="btn btn-primary">Create an account</button>
                     </div>
-
-                    <div class="mb-2">Already a member? <a href="index.php">Log in</a></div>
-
+                    <div class="mb-2">Already a member? <a href="login.php">Log in</a></div>
+                    <div class="mb-2">Back to <a href="index.php">HOME</a></div>
                 </form>
             </div>
         </div>
